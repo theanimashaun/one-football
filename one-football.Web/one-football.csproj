@@ -22,14 +22,18 @@
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Compile Remove="ClientApp\**" />
+    <Compile Remove="one-football.UnitTests\**" />
     <Content Remove="$(SpaRoot)**" />
     <Content Remove="ClientApp\**" />
+    <Content Remove="one-football.UnitTests\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="ClientApp\**" />
+    <EmbeddedResource Remove="one-football.UnitTests\**" />
     <None Remove="ClientApp\**" />
+    <None Remove="one-football.UnitTests\**" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

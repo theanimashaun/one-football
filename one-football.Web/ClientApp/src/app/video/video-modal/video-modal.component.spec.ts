@@ -22,4 +22,11 @@ describe('VideoModalComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show & hide as expected', () => {
+    component.hide();
+    expect(component.visible).toBeFalsy();
+    component.show();
+    expect(component.visible).toBeTruthy();
+  });
 });

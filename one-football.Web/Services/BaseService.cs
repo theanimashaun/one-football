@@ -4,9 +4,9 @@ using System.Net.Http.Headers;
 
 namespace one_football.Services
 {
-    public class BaseService
+    public class BaseService : IBaseService
     {
-        protected HttpClient SetupHttpClient(string baseUrl)
+        public HttpClient SetupHttpClient(string baseUrl)
         {
             var client = new HttpClient
             {

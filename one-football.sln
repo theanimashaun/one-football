@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "one-football", "one-football.csproj", "{7BA70784-156C-4CB6-A02C-7998454DA4A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "one-football", "one-football.Web\one-football.csproj", "{7BA70784-156C-4CB6-A02C-7998454DA4A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "one-football.UnitTests", "one-football.UnitTests\one-football.UnitTests.csproj", "{6D54F2E9-0E3F-405D-86D3-C92606558F83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7BA70784-156C-4CB6-A02C-7998454DA4A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BA70784-156C-4CB6-A02C-7998454DA4A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BA70784-156C-4CB6-A02C-7998454DA4A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D54F2E9-0E3F-405D-86D3-C92606558F83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D54F2E9-0E3F-405D-86D3-C92606558F83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D54F2E9-0E3F-405D-86D3-C92606558F83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D54F2E9-0E3F-405D-86D3-C92606558F83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

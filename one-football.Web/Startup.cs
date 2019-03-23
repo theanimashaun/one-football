@@ -22,6 +22,7 @@ namespace one_football
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IFetchService, FetchService>();
+            services.AddTransient<IBaseService, BaseService>();
 
             services.AddCors(options =>
             {

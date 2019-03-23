@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Country } from '../models/country';
 import { LivescoreInfo } from '../models/livescoreinfo';
@@ -35,13 +35,13 @@ export class AppService {
 
   getLivescores(): Observable<any> {
     return this.http
-    .get<LivescoreInfo[]>(this.baseUrl + 'api/fetch/GetLiveScores')
-    .pipe(map(response => response));
+      .get<LivescoreInfo[]>(this.baseUrl + 'api/fetch/GetLiveScores')
+      .pipe(map(response => response));
   }
 
   getHighLights(): Observable<any> {
     return this.http
-    .get<Highlight[]>(this.baseUrl + 'api/fetch/GetVideoHighlights')
-    .pipe(map(response => response));
+      .get<Highlight[]>(this.baseUrl + 'api/fetch/GetVideoHighlights')
+      .pipe(map(response => response));
   }
 }

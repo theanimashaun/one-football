@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
     private toggleButton;
     private sidebarVisible: boolean;
 
-    @ViewChild("navbar-cmp") button;
+    @ViewChild('navbar-cmp') button;
 
     constructor(location: Location, private renderer: Renderer, private element: ElementRef, private router: Router) {
         this.location = location;
@@ -26,16 +26,16 @@ export class NavbarComponent implements OnInit {
 
     ngOnInit() {
         this.listTitles = ROUTES.filter(listTitle => listTitle);
-        var navbar: HTMLElement = this.element.nativeElement;
+        let navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
         this.router.events.subscribe((event) => {
             this.sidebarClose();
         });
     }
     getTitle() {
-        var titlee = window.location.pathname;
+        let titlee = window.location.pathname;
         titlee = titlee.substring(1);
-        for (var item = 0; item < this.listTitles.length; item++) {
+        for (let item = 0; item < this.listTitles.length; item++) {
             if (this.listTitles[item].path === titlee) {
                 return this.listTitles[item].title;
             }
@@ -43,7 +43,7 @@ export class NavbarComponent implements OnInit {
         return 'Dashboard';
     }
     sidebarToggle() {
-        var $toggle = document.getElementsByClassName('navbar-toggler')[0];
+        let $toggle = document.getElementsByClassName('navbar-toggler')[0];
 
         if (this.sidebarVisible === false) {
             this.sidebarOpen();
@@ -61,11 +61,11 @@ export class NavbarComponent implements OnInit {
         body.classList.add('nav-open');
 
         this.sidebarVisible = true;
-    };
+    }
     sidebarClose() {
         const body = document.getElementsByTagName('body')[0];
         this.toggleButton.classList.remove('toggled');
         this.sidebarVisible = false;
         body.classList.remove('nav-open');
-    };
+    }
 }
