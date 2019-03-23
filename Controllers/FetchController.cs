@@ -20,37 +20,36 @@ namespace one_football.Controllers
         [HttpGet("GetCountries")]
         public async Task<IEnumerable<Country>> GetCountries()
         {
-            var result = await _fetchService.GetCountries();
-            return result;
+            return await _fetchService.GetCountries();
         }
 
-        [HttpGet("GetCompetitions/{countryId}")]
+        [HttpGet("GetCompetitions")]
         public async Task<IEnumerable<Competition>> GetCompetitions(int countryId = 0)
         {
-            var result = await _fetchService.GetCompetitions(countryId);
-            return result;
+            return await _fetchService.GetCompetitions(countryId);
         }
 
-        [HttpGet("GetCompetitions/{leagueId}")]
-        public async Task<IEnumerable<StandingInfo>> GetStandings(int leagueId = 0)
+        [HttpGet("GetStandings/{leagueId}")]
+        public async Task<IEnumerable<StandingInfo>> GetStandings(int leagueId)
         {
-            var result = await _fetchService.GetStandings(leagueId);
-            return result;
+            if (leagueId < 1)
+            {
+                return new List<StandingInfo>();
+            }
+            return await _fetchService.GetStandings(leagueId);
         }
 
         [HttpGet("GetLiveScores")]
         public async Task<IEnumerable<LivescoreInfo>> GetLiveScores()
         {
-            var result = await _fetchService.GetLiveScores();
-            return result;
+            return await _fetchService.GetLiveScores();
         }
 
 
         [HttpGet("GetVideoHighlights")]
         public async Task<IEnumerable<HighlightInfo>> GetVideoHighlights()
         {
-            var result = await _fetchService.GetVideoHighlights();
-            return result;
+            return await _fetchService.GetVideoHighlights();
         }
     }
 }

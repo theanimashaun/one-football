@@ -25,7 +25,7 @@ namespace one_football.Models
         [JsonProperty("match_awayteam_score")]
         public string AwayTeamScore { get; set; }
         [JsonProperty("match_live")]
-        public bool IsLive { get; set; }
+        public string IsLive { get; set; }
         [JsonProperty("goalscorer")]
         public GoalScorer[] GoalScorers { get; set; }
 
@@ -38,7 +38,7 @@ namespace one_football.Models
     public class GoalScorer
     {
         [JsonProperty("time")]
-        public int GoalTime { get; set; }
+        public string GoalTime { get; set; }
         [JsonProperty("home_scorer")]
         public string HomeScorer { get; set; }
         [JsonProperty("score")]

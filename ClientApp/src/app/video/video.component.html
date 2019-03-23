@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <div class="row" *ngIf="loading">
+    <p class="text-muted text-center">
+      <span class="ti-reload"></span>
+      Fetching Videos ...
+    </p>
+  </div>
+  <div class="row">
+    <div *ngFor="let video of highlights" class="col-lg-4 col-sm-6">
+      <div class="card">
+        <div class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <h6 class="text-center">
+                {{ video.title }}
+              </h6>
+              <br />
+            </div>
+            <div class="col-xs-12">
+              <img class="img-responsive" src='{{ video.thumbnail }}' alt='{{ video.title }}' />
+            </div>
+          </div>
+          <div class="footer text-center">
+            <hr />
+            <div class="stats">
+              <p>
+                <button (click)="playVideo(video.title, video.embed)">
+                  &nbsp;&nbsp;
+                  <span class="ti-control-play">
+                  </span>
+                  &nbsp;&nbsp;
+                </button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <app-video-modal #modal>
+      <div class="app-modal-header">
+        {{ currentHighlight.title  }}
+      </div>
+      <div class="app-modal-body">
+        <div class="embed-responsive-item" [innerHTML]="currentHighlight.url">
+        </div>
+      </div>
+      <div class="app-modal-footer">
+        <button type="button" class="btn btn-default" (click)="modal.hide()">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </app-video-modal>
+  </div>
+</div>

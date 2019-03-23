@@ -70,11 +70,11 @@ namespace one_football.Services
         public async Task<IEnumerable<LivescoreInfo>> GetLiveScores()
         {
             var currentDate = DateTime.Now;
-            var aDayBefore = currentDate.Subtract(TimeSpan.FromDays(1));
+            var daysBefore = currentDate.Subtract(TimeSpan.FromDays(15));
 
             // Results with match_live = 1 are ongoing matches
             var client = SetupHttpClient(_apiFootballUrl);
-            var url = $"{_apiFootballUrl}get_events&from={currentDate:yyyy-MM-dd}&{aDayBefore:yyyy-MM-dd}";
+            var url = $"{_apiFootballUrl}get_events&from={daysBefore:yyyy-MM-dd}&to={currentDate:yyyy-MM-dd}";
             var response = await client.GetAsync(url);
 
             var responseMessage = await response.Content.ReadAsStringAsync();
@@ -85,9 +85,9 @@ namespace one_football.Services
             }
 
             var livescores = JsonConvert.DeserializeObject<List<LivescoreInfo>>(responseMessage);
-            if (livescores.Count(x => x.IsLive) > 5)
+            if (livescores.Count(x => x.IsLive == "1") > 5)
             {
-                return livescores.Where((x => x.IsLive));
+                return livescores.Where((x => x.IsLive == "1"));
             }
             return livescores;
         }

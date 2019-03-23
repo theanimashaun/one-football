@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <div class="row" *ngIf="loading">
+    <p class="text-muted text-center">
+      <span class="ti-reload"></span>
+      Fetching Scores ...
+    </p>
+  </div>
+  <div class="row">
+    <div *ngFor="let score of livescores" class="col-sm-12 col-md-12 card">
+      <div class="content">
+        <div class="col-sm-12 col-md-12">
+          <div class="col-sm-12 col-md-6 text-right right">
+            <div>
+              <h4>
+                {{score.match_hometeam_name}}&nbsp;&nbsp;&nbsp;{{score.match_hometeam_score}}
+              </h4>
+            </div>
+            <div>
+              <p class="text-muted text-small">
+                <span *ngFor="let goal of score.goalscorer">
+                  <small *ngIf="goal.home_scorer.length > 0">
+                    {{ goal.home_scorer }}&nbsp;&nbsp;&nbsp;{{ goal.time }}
+                  </small>
+                  <br />
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-6">
+            <div>
+              <h4>
+                {{score.match_awayteam_score}}&nbsp;&nbsp;&nbsp;{{score.match_awayteam_name}}
+              </h4>
+            </div>
+            <div>
+              <p class="text-muted text-small">
+                <span *ngFor="let goal of score.goalscorer">
+                  <small *ngIf="goal.away_scorer.length > 0">
+                    {{ goal.time }}&nbsp;&nbsp;&nbsp;{{ goal.away_scorer }}
+                  </small>
+                  <br />
+                </span>
+              </p>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-sm-12 text-center">
+          <div class="footer">
+            <hr />
+            <div *ngIf="score.match_live === '1'" class="stats">
+              <h6>Live Match: {{score.match_status}}</h6>
+            </div>
+            <div *ngIf="score.match_live !== '1'" class="stats">
+              <h6>{{score.match_status}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

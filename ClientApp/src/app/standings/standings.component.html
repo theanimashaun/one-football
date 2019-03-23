@@ -1,0 +1,87 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12" *ngIf="!loadingCountries">
+      <div class="card">
+        <div class="content">
+
+          <div class="row">
+            <div *ngFor="let competition of competitions" class="col-lg-3 col-sm-6">
+              <div class="card">
+                <div class="content">
+                  <div class="row">
+                    <div class="col-xs-12 text-center">
+                      <p>
+                        {{ competition.league_name }}
+                      </p>
+                      <small>
+                        {{ competition.country_name }}
+                      </small>
+                    </div>
+                  </div>
+                  <div class="footer text-center">
+                    <hr />
+                    <div class="stats">
+                      <button (click)="fetchStandings(competition.league_id)" class="btn btn-small btn-primary">
+                        &nbsp;&nbsp;View Standings&nbsp;&nbsp;
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <hr />
+              <p class="text-muted text-center" *ngIf="standings.length < 1 && !loadingStandings">
+                No standings. Select a Competition.
+              </p>
+              <p class="text-muted text-center" *ngIf="loadingStandings">
+                <span class="ti-reload"></span>
+                Fetching Standings ...
+              </p>
+              <table *ngIf="standings.length > 0" class="table table-responsive table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Team Name</th>
+                    <th>Pts</th>
+                    <th>MP</th>
+                    <th>W</th>
+                    <th>L</th>
+                    <th>D</th>
+                    <th>GF</th>
+                    <th>GA</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let standing of standings">
+                    <td>{{ standing.overall_league_position }}</td>
+                    <td>{{ standing.team_name }}</td>
+                    <td>{{ standing.overall_league_PTS }}</td>
+                    <td>{{ standing.overall_league_payed }}</td>
+                    <td>{{ standing.overall_league_W }}</td>
+                    <td>{{ standing.overall_league_L }}</td>
+                    <td>{{ standing.overall_league_D }}</td>
+                    <td>{{ standing.overall_league_GF }}</td>
+                    <td>{{ standing.overall_league_GA }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12" *ngIf="loadingCountries">
+      <p class="text-muted text-center">
+        <span class="ti-reload"></span>
+        Fetching Competitions ...
+      </p>
+    </div>
+
+  </div>
+</div>
